@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="RMbtsdonations is a sharp fan-led donation hub for Kim Namjoon supporters funding Arirang tour marketing, posters, PR, and transparent campaign work."
+    />
+    <title>RMbtsdonations</title>
+    <link rel="preload" href="assets/arirang-hero-banner.png" as="image" />
+    <link rel="preload" href="assets/arirang-tour-cover.jpg" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#donate">Skip to donation form</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="RMbtsdonations home">
+          <span class="brand-mark" aria-hidden="true">RM</span>
+          <span>
+            <strong>RMbtsdonations</strong>
+            <small>rmbtsdonations.com</small>
+          </span>
+        </a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+          <span class="sr-only">Toggle menu</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <div class="nav-links" id="site-menu">
+          <a href="#tour">Arirang</a>
+          <a href="#mission">Profile</a>
+          <a href="#allocation">Budget</a>
+          <a href="#proof">Proof</a>
+          <a href="#faq">FAQ</a>
+          <a class="nav-cta" href="#donate">Donate</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-mask" aria-hidden="true"></div>
+
+        <div class="hero-shell">
+          <div class="hero-text">
+            <p class="label" data-campaign="eyebrow">RMbtsdonations.com / Independent ARMY campaign</p>
+            <h1 id="hero-title">RMbtsdonations</h1>
+            <p class="hero-copy" data-campaign="heroCopy">
+              A fan donation hub for Kim Namjoon supporters funding Arirang tour marketing,
+              poster runs, flyers, external PR, fan visibility, and transparent campaign logistics.
+            </p>
+            <div class="hero-actions" aria-label="Primary actions">
+              <a class="button button-primary" href="#donate">Donate now</a>
+              <a class="button button-secondary" href="#allocation">View budget</a>
+            </div>
+          </div>
+
+          <figure class="hero-banner">
+            <img
+              src="assets/arirang-hero-banner.png"
+              alt="BTS World Tour Arirang banner artwork"
+              width="574"
+              height="762"
+            />
+            <figcaption>Arirang tour cover</figcaption>
+          </figure>
+        </div>
+
+        <div class="donation-dock" id="donate" aria-labelledby="donate-title">
+          <div class="dock-shell">
+            <div class="dock-copy">
+              <p class="label">Donation</p>
+              <h2 id="donate-title">Choose support</h2>
+              <p data-campaign="dockCopy">Support with USDT, Bitcoin, USDC, or bank transfer once admin details are live.</p>
+            </div>
+
+            <form class="donation-form" aria-label="Donation form">
+              <fieldset>
+                <legend>Amount</legend>
+                <div class="amount-grid" role="group" aria-label="Donation amount" data-amount-grid>
+                  <button class="amount-option is-selected" type="button" data-amount="10">$10</button>
+                  <button class="amount-option" type="button" data-amount="25">$25</button>
+                  <button class="amount-option" type="button" data-amount="50">$50</button>
+                  <button class="amount-option" type="button" data-amount="100">$100</button>
+                </div>
+              </fieldset>
+
+              <label class="custom-amount" for="custom-amount">
+                <span>Custom</span>
+                <span class="amount-input">
+                  <span aria-hidden="true" data-currency-symbol>$</span>
+                  <input
+                    id="custom-amount"
+                    name="custom-amount"
+                    type="number"
+                    min="1"
+                    step="1"
+                    inputmode="numeric"
+                    placeholder="Amount"
+                  />
+                </span>
+              </label>
+
+              <div class="payment-actions" aria-label="Payment options">
+                <button class="payment-button" type="button" data-payment="usdt">USDT</button>
+                <button class="payment-button" type="button" data-payment="bitcoin">Bitcoin</button>
+                <button class="payment-button" type="button" data-payment="usdc">USDC</button>
+                <button class="payment-button" type="button" data-payment="bank">Bank</button>
+              </div>
+
+              <p class="form-note" id="payment-status" role="status" aria-live="polite">
+                Crypto wallets and bank details are awaiting fanbase admin approval.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="payment-flow-section" id="payment-flow" aria-labelledby="payment-flow-title">
+        <div class="section-shell payment-flow-grid">
+          <aside class="flow-sidebar">
+            <p class="label">Payment Flow</p>
+            <h2 id="payment-flow-title">Complete the donation.</h2>
+            <ol class="flow-steps">
+              <li>Choose the amount and payment method.</li>
+              <li>Copy the approved wallet or bank details.</li>
+              <li>Send funds from your wallet or bank app.</li>
+              <li>Upload proof so admins can reconcile the donation.</li>
+            </ol>
+
+            <div class="flow-tabs" aria-label="Payment method detail tabs">
+              <button class="flow-tab is-selected" type="button" data-flow-method="usdt">USDT</button>
+              <button class="flow-tab" type="button" data-flow-method="bitcoin">Bitcoin</button>
+              <button class="flow-tab" type="button" data-flow-method="usdc">USDC</button>
+              <button class="flow-tab" type="button" data-flow-method="bank">Bank</button>
+            </div>
+          </aside>
+
+          <div class="payment-room">
+            <div class="payment-room-head">
+              <div>
+                <p class="label" id="payment-method-label">USDT</p>
+                <h3 id="payment-method-title">USDT donation details</h3>
+              </div>
+              <strong data-selected-amount>$10</strong>
+            </div>
+
+            <div class="payment-warning" id="payment-method-warning">
+              Only send funds to admin-approved details shown on this page.
+            </div>
+
+            <div class="payment-detail-card">
+              <span id="payment-detail-label">Wallet address</span>
+              <div class="copy-field">
+                <code id="payment-detail-value">Awaiting admin-approved USDT wallet address</code>
+                <button class="mini-button" type="button" id="copy-payment-detail" disabled>Copy</button>
+              </div>
+              <p id="payment-network-note">Network: TRC20/ERC20. Confirm the network before sending.</p>
+            </div>
+
+            <div class="method-copy">
+              <h3>Before sending</h3>
+              <ul id="payment-instructions"></ul>
+            </div>
+
+            <form class="proof-form" id="proof-form" aria-label="Upload proof of funds form">
+              <div class="proof-head">
+                <div>
+                  <p class="label">Proof of Funds</p>
+                  <h3>Upload receipt or transaction proof</h3>
+                </div>
+                <span id="proof-method-badge">USDT</span>
+              </div>
+
+              <div class="proof-grid">
+                <label>
+                  <span>Name or fan handle</span>
+                  <input name="donorName" type="text" maxlength="40" placeholder="Optional" />
+                </label>
+                <label>
+                  <span>Email / X / Telegram</span>
+                  <input name="contact" type="text" maxlength="80" placeholder="For receipt follow-up" />
+                </label>
+                <label>
+                  <span>Transaction hash / bank reference</span>
+                  <input name="reference" type="text" maxlength="120" placeholder="Paste reference" required />
+                </label>
+                <label>
+                  <span>Proof file</span>
+                  <input
+                    id="proof-file"
+                    name="proofFile"
+                    type="file"
+                    accept="image/*,.pdf"
+                    required
+                  />
+                </label>
+              </div>
+
+              <label class="proof-note">
+                <span>Note for admins</span>
+                <textarea
+                  name="note"
+                  rows="3"
+                  maxlength="220"
+                  placeholder="Optional note about the transfer"
+                ></textarea>
+              </label>
+
+              <div class="proof-actions">
+                <button class="button button-primary" type="submit">Submit proof</button>
+                <p id="proof-status" role="status" aria-live="polite">
+                  Proof upload is ready. Admin submission endpoint still needs to be connected.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-strip" aria-label="Campaign highlights">
+        <div class="section-shell stats-grid">
+          <div>
+            <strong data-stat-value="0">AR</strong>
+            <span data-stat-label="0">Arirang tour marketing</span>
+          </div>
+          <div>
+            <strong data-stat-value="1">$5,000</strong>
+            <span data-stat-label="1">funding target</span>
+          </div>
+          <div>
+            <strong data-stat-value="2">24h</strong>
+            <span data-stat-label="2">receipt update goal</span>
+          </div>
+          <div>
+            <strong data-stat-value="3">RM</strong>
+            <span data-stat-label="3">RMbtsdonations</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="tour-section" id="tour" aria-labelledby="tour-title">
+        <div class="section-shell tour-layout">
+          <figure class="tour-cover">
+            <img
+              src="assets/arirang-tour-cover.jpg"
+              alt="BTS World Tour Arirang cover"
+              width="9500"
+              height="3167"
+            />
+            <figcaption>Arirang tour marketing cover</figcaption>
+          </figure>
+
+          <div class="tour-content">
+            <p class="label">Arirang Tour</p>
+            <h2 id="tour-title">Marketing run for Namjoon visibility.</h2>
+            <p>
+              Built like a tour page, but for fanbase action: campaign waves, print drops,
+              external PR, street visibility, and receipt-led reporting.
+            </p>
+
+            <div class="tour-table" role="table" aria-label="Arirang tour marketing plan">
+              <div class="tour-row tour-head" role="row">
+                <span role="columnheader">Wave</span>
+                <span role="columnheader">Marketing action</span>
+                <span role="columnheader">Status</span>
+              </div>
+              <article class="tour-row" role="row">
+                <strong role="cell">01</strong>
+                <p role="cell">Poster artwork, flyer copy, donation push, and fanbase rollout.</p>
+                <span role="cell">Preparing</span>
+              </article>
+              <article class="tour-row" role="row">
+                <strong role="cell">02</strong>
+                <p role="cell">Print production, city placement, volunteer routing, and proof logs.</p>
+                <span role="cell">Vendor check</span>
+              </article>
+              <article class="tour-row" role="row">
+                <strong role="cell">03</strong>
+                <p role="cell">External PR, creator boosts, fan updates, and final impact report.</p>
+                <span role="cell">Funding</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-section" id="mission" aria-labelledby="mission-title">
+        <div class="section-shell profile-grid">
+          <div>
+            <p class="label">Profile</p>
+            <h2 id="mission-title">Fan-led, sharp, and accountable.</h2>
+          </div>
+          <div class="profile-copy">
+            <p>
+              This fund is built for fans who want the support campaign to look serious:
+              clean print work, smart visibility, organized outreach, and proof that every
+              contribution is handled with care.
+            </p>
+            <p>
+              We are not trying to look official. We are trying to look prepared.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="budget-section" id="allocation" aria-labelledby="allocation-title">
+        <div class="section-shell">
+          <div class="section-heading">
+            <p class="label">Budget</p>
+            <h2 id="allocation-title" data-campaign="budgetTitle">Every donation gets a job.</h2>
+          </div>
+
+          <div class="budget-table" role="table" aria-label="Donation budget allocation">
+            <div class="budget-row budget-head" role="row">
+              <span role="columnheader">Use</span>
+              <span role="columnheader">Purpose</span>
+              <span role="columnheader">Split</span>
+            </div>
+            <article class="budget-row" role="row" data-budget-row="0">
+              <h3 role="cell">Posters and flyers</h3>
+              <p role="cell">Design prep, print runs, delivery, placement, and local visibility.</p>
+              <strong role="cell">40%</strong>
+            </article>
+            <article class="budget-row" role="row" data-budget-row="1">
+              <h3 role="cell">External PR</h3>
+              <p role="cell">Outreach, fan campaign amplification, creator support, and placements.</p>
+              <strong role="cell">30%</strong>
+            </article>
+            <article class="budget-row" role="row" data-budget-row="2">
+              <h3 role="cell">On-ground support</h3>
+              <p role="cell">Volunteer materials, banners, venue-area support, and quick logistics.</p>
+              <strong role="cell">20%</strong>
+            </article>
+            <article class="budget-row" role="row" data-budget-row="3">
+              <h3 role="cell">Reserve</h3>
+              <p role="cell">Contingency for vendor changes, urgent printing, and last-mile needs.</p>
+              <strong role="cell">10%</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-section" id="proof" aria-labelledby="proof-title">
+        <div class="section-shell proof-grid">
+          <div class="section-heading">
+            <p class="label">Proof</p>
+            <h2 id="proof-title">Receipts should hit as hard as the posters.</h2>
+            <p>
+              Replace these sample logs with live receipt links, vendor screenshots, payout notes,
+              and campaign results once spend begins.
+            </p>
+          </div>
+
+          <div class="log-list" aria-label="Campaign proof log">
+            <article>
+              <time datetime="2026-06-11">2026.06.11</time>
+              <h3>Support hub rebuilt</h3>
+              <p>Donation routing prepared and fan-facing copy tightened.</p>
+            </article>
+            <article>
+              <time datetime="2026-06-13">2026.06.13</time>
+              <h3>Print quotes</h3>
+              <p>Compare poster and flyer vendors before releasing the first proof note.</p>
+            </article>
+            <article>
+              <time datetime="2026-06-15">2026.06.15</time>
+              <h3>PR wave</h3>
+              <p>Finalize fan outreach slots, campaign assets, and approved copy.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="fan-wall-section" aria-labelledby="fan-wall-title">
+        <div class="section-shell fan-wall-grid">
+          <div class="section-heading">
+            <p class="label">Fan Wall</p>
+            <h2 id="fan-wall-title">Leave a note for the project.</h2>
+            <p>Short notes stay on the page during the current visit.</p>
+          </div>
+
+          <div class="fan-wall">
+            <form class="note-form" aria-label="Fan note form">
+              <label for="fan-name">Name</label>
+              <input id="fan-name" name="fan-name" type="text" maxlength="30" placeholder="Fan name" />
+              <label for="fan-note">Note</label>
+              <textarea
+                id="fan-note"
+                name="fan-note"
+                maxlength="120"
+                rows="3"
+                placeholder="Write a short message"
+              ></textarea>
+              <button class="button button-primary" type="submit">Add note</button>
+            </form>
+
+            <div class="notes-list" aria-live="polite">
+              <article>
+                <strong>Indigo Team</strong>
+                <p>For thoughtful art, careful words, and showing up beautifully.</p>
+              </article>
+              <article>
+                <strong>Purple Signal</strong>
+                <p>Every poster intentional. Every receipt clear.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="section-shell faq-grid">
+          <div>
+            <p class="label">FAQ</p>
+            <h2 id="faq-title">Clear before fans give.</h2>
+          </div>
+
+          <div class="faq-list">
+            <details>
+              <summary>Is this official?</summary>
+              <p>
+                No. This is an independent fan-led project and is not affiliated with, endorsed by,
+                or sponsored by HYBE, BigHit Music, BTS, RM/Kim Namjoon, Arirang, or any tour
+                organizer.
+              </p>
+            </details>
+            <details>
+              <summary>How will spending be shown?</summary>
+              <p>
+                Post receipts, vendor invoices, payment confirmations, budget summaries, and
+                campaign results after each approved spend.
+              </p>
+            </details>
+            <details>
+              <summary>Can fans help without donating?</summary>
+              <p>
+                Yes. Fans can volunteer, share approved campaign posts, translate, design assets,
+                distribute flyers, or organize proof-of-spend updates.
+              </p>
+            </details>
+            <details>
+              <summary>Which payment methods can be connected?</summary>
+              <p>
+                The page supports USDT, Bitcoin, USDC, and bank transfer paths once approved
+                campaign wallets and bank details are live.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="chat-widget" aria-label="Donation live guide">
+      <button class="chat-toggle" type="button" aria-expanded="false" aria-controls="chat-panel">
+        <span aria-hidden="true"></span>
+        Live donation guide
+      </button>
+
+      <div class="chat-panel" id="chat-panel" hidden>
+        <div class="chat-head">
+          <div>
+            <strong>RMbtsdonations support</strong>
+            <small>Online guide for donation steps</small>
+          </div>
+          <button class="chat-close" type="button" aria-label="Close chat">Close</button>
+        </div>
+
+        <div class="chat-messages" id="chat-messages" aria-live="polite">
+          <p class="chat-message is-guide">
+            Hi. Choose USDT, Bitcoin, USDC, or Bank, then upload proof after sending. I can guide
+            you through the steps.
+          </p>
+        </div>
+
+        <div class="chat-prompts" aria-label="Quick chat prompts">
+          <button type="button" data-chat-prompt="How do I donate with USDT?">USDT</button>
+          <button type="button" data-chat-prompt="How do I donate with Bitcoin?">Bitcoin</button>
+          <button type="button" data-chat-prompt="How do I upload proof?">Proof</button>
+          <button type="button" data-chat-prompt="I need bank transfer help">Bank</button>
+        </div>
+
+        <form class="chat-form" id="chat-form" aria-label="Donation chat form">
+          <label class="sr-only" for="chat-input">Message</label>
+          <input id="chat-input" type="text" autocomplete="off" placeholder="Ask about donating" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="section-shell footer-grid">
+        <div>
+          <strong>RMbtsdonations</strong>
+          <p>Independent fan project for Arirang tour marketing donations.</p>
+        </div>
+        <a href="#donate">Donate</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
