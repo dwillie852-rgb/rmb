@@ -1,7 +1,8 @@
 const crypto = require("crypto");
-const admin = require("firebase-admin");
+const { initializeApp, getApps, cert } = require("firebase-admin/app");
+const { getAuth } = require("firebase-admin/auth");
 
-if (!admin.apps.length) {
+if (getApps().length === 0) {
   try {
     const projectId = process.env.FIREBASE_PROJECT_ID;
     const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
@@ -11,15 +12,15 @@ if (!admin.apps.length) {
     }
 
     if (projectId && clientEmail && privateKey) {
-      admin.initializeApp({
-        credential: admin.credential.cert({
+      initializeApp({
+        credential: cert({
           projectId,
           clientEmail,
           privateKey,
         }),
       });
     } else {
-      admin.initializeApp();
+      initializeApp();
     }
   } catch (err) {
     console.error("Firebase admin init error:", err);
@@ -82,7 +83,7 @@ async function requireAdmin(req, res) {
   }
 
   try {
-    await admin.auth().verifyIdToken(token);
+    await getAuth().verifyIdToken(token);
     return true;
   } catch (error) {
     sendError(res, 401, "Invalid or expired admin token.");
