@@ -91,7 +91,6 @@ async function requireAdmin(req, res) {
 }
 
 module.exports = {
-  getExpectedAdminToken,
   isLocalRequest,
   readJsonBody,
   requireAdmin,
