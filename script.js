@@ -2,7 +2,7 @@ let proofSubmissionEndpoint = "/api/proofs";
 
 const defaultCampaign = {
   currencySymbol: "$",
-  presetAmounts: [3000, 10000, 20000, 30000],
+  presetAmounts: [1000, 3000, 5000, 10000],
   fundraisingGoal: 85000,
   receiptGoal: "24h",
   eyebrow: "RMbtsdonations.com / Independent ARMY campaign",
