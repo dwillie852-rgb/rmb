@@ -2,8 +2,8 @@ let proofSubmissionEndpoint = "/api/proofs";
 
 const defaultCampaign = {
   currencySymbol: "$",
-  presetAmounts: [10, 25, 50, 100],
-  fundraisingGoal: 5000,
+  presetAmounts: [3000, 10000, 20000, 30000],
+  fundraisingGoal: 85000,
   receiptGoal: "24h",
   eyebrow: "RMbtsdonations.com / Independent ARMY campaign",
   heroCopy:
@@ -12,8 +12,8 @@ const defaultCampaign = {
   budgetTitle: "Every donation gets a job.",
   stats: [
     { value: "AR", label: "Arirang tour marketing" },
-    { value: "$5,000", label: "funding target" },
-    { value: "24h", label: "receipt update goal" },
+    { value: "$37,500", label: "raised so far" },
+    { value: "$85,000", label: "funding target" },
     { value: "RM", label: "RMbtsdonations" },
   ],
   budget: [
