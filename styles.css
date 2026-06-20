@@ -1379,3 +1379,37 @@ details p {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Success Dialog Styling */
+.success-dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 400px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.success-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.success-dialog .dialog-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.success-dialog .dialog-content p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.success-dialog .dialog-content button {
+  margin-top: 0.5rem;
+  width: 100%;
+}

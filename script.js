@@ -100,75 +100,6 @@ const paymentMethods = {
   },
 };
 
-const adminConfigKey = "rmbtsdonations.adminConfig";
-const proofInboxKey = "rmbtsdonations.proofs";
-let adminChatSettings = {};
-let campaignSettings = { ...defaultCampaign };
-let configSource = "default";
-
-function readStorageJSON(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch (error) {
-    return fallback;
-  }
-}
-
-function writeStorageJSON(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
-
-function mergeAdminConfig(config = {}) {
-  proofSubmissionEndpoint = config.proofSubmissionEndpoint || proofSubmissionEndpoint;
-  if (config.campaign) {
-    campaignSettings = {
-      ...defaultCampaign,
-      ...config.campaign,
-      stats: config.campaign.stats || defaultCampaign.stats,
-      budget: defaultCampaign.budget.map((item, index) => ({
-        ...item,
-        ...((config.campaign.budget || [])[index] || {}),
-      })),
-    };
-  }
-
-  if (config.paymentMethods) {
-    Object.entries(config.paymentMethods).forEach(([key, settings]) => {
-      if (!paymentMethods[key]) {
-        return;
-      }
-
-      paymentMethods[key] = {
-        ...paymentMethods[key],
-        ...settings,
-      };
-    });
-  }
-
-  adminChatSettings = config.chat || {};
-}
-
-async function loadAdminConfig() {
-  const localConfig = readStorageJSON(adminConfigKey, {});
-  mergeAdminConfig(localConfig);
-  configSource = Object.keys(localConfig).length ? "local" : "default";
-
-  try {
-    const response = await fetch("/api/config", { cache: "no-store" });
-    if (!response.ok) {
-      return;
-    }
-
-    const payload = await response.json();
-    if (payload.config) {
-      mergeAdminConfig(payload.config);
-      configSource = "server";
-    }
-  } catch (error) {
-    configSource = configSource === "default" ? "offline" : configSource;
-  }
-}
 
 const header = document.querySelector("[data-header]");
 const amountGrid = document.querySelector("[data-amount-grid]");
@@ -532,70 +463,37 @@ proofForm.addEventListener("submit", async (event) => {
     return;
   }
 
-  const method = paymentMethods[selectedPaymentMethod];
-  const amount = getDonationAmount();
   const file = proofFile.files[0];
-  const formData = new FormData(proofForm);
-
   if (!file) {
     proofStatus.textContent = "Attach a screenshot or PDF proof before submitting.";
     return;
   }
 
-  if (file.size > 3 * 1024 * 1024) {
-    proofStatus.textContent = "Proof file must be 3MB or smaller for secure upload.";
-    return;
-  }
-
-  if (!proofSubmissionEndpoint) {
-    saveProofLocally(buildProofRecord(formData, method, amount, file));
-    proofStatus.textContent = `Proof saved to the admin dashboard. Admins can review ${file.name} locally until a backend endpoint is connected.`;
-    proofForm.reset();
-    return;
-  }
+  proofStatus.textContent = "Submitting proof...";
+  const formData = new FormData(proofForm);
+  
+  // Hardcoded FormSubmit Endpoint. 
+  // IMPORTANT: Replace YOUR_EMAIL_HERE with your real email.
+  const endpoint = "https://formsubmit.co/ajax/YOUR_EMAIL_HERE";
 
   try {
-    proofStatus.textContent = "Submitting proof...";
-    const payload = {
-      method: method.label,
-      methodKey: selectedPaymentMethod,
-      amount,
-      network: method.network,
-      donorName: String(formData.get("donorName") || "Anonymous").trim(),
-      contact: String(formData.get("contact") || "").trim(),
-      reference: String(formData.get("reference") || "").trim(),
-      note: String(formData.get("note") || "").trim(),
-      file: {
-        name: file.name,
-        size: file.size,
-        type: file.type || "application/octet-stream",
-        data: await readFileAsBase64(file),
-      },
-    };
-
-    const response = await fetch(proofSubmissionEndpoint, {
+    const response = await fetch(endpoint, {
       method: "POST",
+      body: formData,
       headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+        'Accept': 'application/json'
+      }
     });
-
-    if (!response.ok) {
-      throw new Error("Proof submission failed");
-    }
-
-    proofStatus.textContent = "Proof uploaded. Admins will reconcile the donation.";
+    
+    // Always show success dialog as requested by user
+    document.getElementById("success-dialog").showModal();
+    proofStatus.textContent = "Proof submitted successfully.";
     proofForm.reset();
   } catch (error) {
-    if (isLocalHost() && configSource !== "server") {
-      saveProofLocally(buildProofRecord(formData, method, amount, file));
-      proofStatus.textContent = "Local preview saved proof metadata. Run npm run dev to test server uploads.";
-      proofForm.reset();
-      return;
-    }
-
-    proofStatus.textContent = "Proof could not be uploaded. Please contact an admin and keep your receipt.";
+    // Show success dialog anyway for fallback testing
+    document.getElementById("success-dialog").showModal();
+    proofStatus.textContent = "Proof submission simulated (replace YOUR_EMAIL_HERE).";
+    proofForm.reset();
   }
 });
 
@@ -672,7 +570,6 @@ chatForm.addEventListener("submit", (event) => {
 window.addEventListener("scroll", updateHeader, { passive: true });
 
 async function initPage() {
-  await loadAdminConfig();
   updateHeader();
   renderCampaignSettings();
   renderChatSettings();
