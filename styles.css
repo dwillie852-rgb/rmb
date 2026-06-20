@@ -1414,66 +1414,141 @@ details p {
   width: 100%;
 }
 
-/* Campaign Progress Bar */
+
+/* Premium Brutalist Progress Bar */
 .campaign-progress {
   margin: 1.5rem 0;
-  padding: 1rem;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+
+.campaign-progress::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent 70%);
+  pointer-events: none;
 }
 
 .progress-labels {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  text-transform: uppercase;
 }
 
 .progress-labels strong {
-  color: var(--color-text);
+  font-size: 1.25rem;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  font-weight: 700;
 }
 
 .progress-labels span {
-  color: var(--color-text-dim);
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
 }
 
 .progress-track {
   width: 100%;
-  height: 8px;
-  background-color: var(--color-border);
-  border-radius: 4px;
-  overflow: hidden;
+  height: 4px;
+  background-color: var(--panel-2);
+  border: 1px solid var(--line);
+  position: relative;
 }
 
 .progress-fill {
   height: 100%;
-  background-color: var(--color-primary);
-  border-radius: 4px;
-  transition: width 1s ease-in-out;
+  background-color: var(--ink);
+  position: relative;
+  transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-/* Upgraded Success Dialog */
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    transparent
+  );
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Premium Success Dialog */
 .success-dialog {
-  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  padding: 3rem 2rem;
+  max-width: 420px;
+  text-align: center;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.success-dialog .dialog-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.success-dialog .dialog-content p {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.success-dialog .dialog-content p strong {
+  color: var(--ink);
+}
+
+.success-dialog .dialog-content button {
+  width: 100%;
+  margin-top: 0.75rem;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .success-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 1rem;
-  background-color: rgba(0, 200, 83, 0.1);
-  color: #00c853;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  background-color: var(--panel-2);
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   animation-delay: 0.1s;
 }
 
