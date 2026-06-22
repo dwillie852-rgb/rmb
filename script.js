@@ -1,6 +1,6 @@
 let proofSubmissionEndpoint = "/api/proofs";
 
-const defaultCampaign = {
+const campaignSettings = {
   currencySymbol: "$",
   presetAmounts: [1000, 3000, 5000, 10000],
   fundraisingGoal: 85000,
@@ -39,6 +39,8 @@ const defaultCampaign = {
     },
   ],
 };
+
+const adminChatSettings = { mode: "off" };
 
 const paymentMethods = {
   usdt: {
