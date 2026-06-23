@@ -516,7 +516,21 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6a3a4278351d6e1d43433657/1jrpp7ccl';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
   
     <dialog id="success-dialog" class="success-dialog">
       <div class="dialog-content">
@@ -528,7 +542,7 @@
         <h2>Donation Submitted Successfully!</h2>
         <p>Thank you for supporting the campaign.</p>
         <p><strong>IMPORTANT:</strong> Please click the Live Donation Guide chat below to confirm your payment with an admin, or if you encounter any problems.</p>
-        <button class="button button-primary" onclick="document.getElementById('success-dialog').close(); document.querySelector('.chat-toggle').click();">Talk to Livechat</button>
+        <button class="button button-primary" onclick="document.getElementById('success-dialog').close(); if (typeof Tawk_API !== 'undefined') Tawk_API.toggle();">Talk to Livechat</button>
         <button class="button" onclick="document.getElementById('success-dialog').close()">Close</button>
       </div>
     </dialog>
