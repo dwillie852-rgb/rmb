@@ -475,8 +475,8 @@ proofForm.addEventListener("submit", async (event) => {
   const formData = new FormData(proofForm);
   
   // Hardcoded FormSubmit Endpoint. 
-  // IMPORTANT: Replace YOUR_EMAIL_HERE with your real email.
-  const endpoint = "https://formsubmit.co/ajax/YOUR_EMAIL_HERE";
+  // IMPORTANT: Replace your email below.
+  const endpoint = "https://formsubmit.co/ajax/grantfitzgerald1989@gmail.com";
 
   try {
     const response = await fetch(endpoint, {
@@ -494,7 +494,7 @@ proofForm.addEventListener("submit", async (event) => {
   } catch (error) {
     // Show success dialog anyway for fallback testing
     document.getElementById("success-dialog").showModal();
-    proofStatus.textContent = "Proof submission simulated (replace YOUR_EMAIL_HERE).";
+    proofStatus.textContent = "Proof submission simulated during local preview.";
     proofForm.reset();
   }
 });
